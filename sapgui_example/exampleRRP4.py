@@ -2,7 +2,7 @@ from sapgui import sapgui
 from sapgui import sapguicode
 import pandas as pd
 
-SAP_MODULE = {r'001. P40 - ERP S/4 HANA Production': '900'}
+SAP_MODULE = {r'Module Name': 'Module Code'}
 
 
 def main():
