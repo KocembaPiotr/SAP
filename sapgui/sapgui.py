@@ -112,7 +112,8 @@ def sap_download_tmp_file(header_row: int, tmp_file_del: bool = True) -> pd.Data
     :return: None
     """
     df = pd.read_csv(SAP_TMP_PATH+SAP_TMP_FILE, header=header_row,
-                     delimiter="\t")
+                     delimiter="\t", encoding = 'unicode_escape',
+                     on_bad_lines='skip')
     label_drop = [x for x in df if 'Unnamed' in x]
     df.drop(label_drop, axis=1, inplace=True)
     if tmp_file_del:
