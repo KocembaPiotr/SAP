@@ -1,4 +1,6 @@
 import win32com.client
+import pythoncom
+import threading
 import subprocess
 import pandas as pd
 import time
@@ -9,6 +11,7 @@ SAP_APP_PATH = r'C:\Program Files (x86)\SAP\FrontEnd\SAPgui\\'
 SAP_APP_FILE = 'saplogon.exe'
 SAP_TMP_PATH = r'C:\temp\\'
 SAP_TMP_FILE = 'tmp.txt'
+SAP_ACTIVE_SESSION = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
 
 
 class SapGui:
@@ -74,6 +77,39 @@ class SapGui:
         if self.__sap_module_opened:
             func(self.__session, *args, **kwargs)
         return self
+
+    def sap_close_all_session(self) -> None:
+        self.__connection.CloseConnection()
+
+
+def sap_run_new_session(func, *args, **kwargs) -> None:
+    def sap_run_tread(*arguments):
+        pythoncom.CoInitialize()
+        win32com.client.Dispatch(pythoncom.CoGetInterfaceAndReleaseStream(
+            arguments[0], pythoncom.IID_IDispatch))
+        sap_gui_auto = win32com.client.GetObject("SAPGUI")
+        application = sap_gui_auto.GetScriptingEngine
+        connection = application.Children(0)
+        while 0 not in SAP_ACTIVE_SESSION.values():
+            time.sleep(10)
+        for session_id, session_active in SAP_ACTIVE_SESSION.items():
+            if session_active == 0:
+                SAP_ACTIVE_SESSION[session_id] = 1
+                session = connection.Children(0)
+                session.createsession()
+                time.sleep(2)
+                session = connection.Children(session_id)
+                func(session, *args, **kwargs)
+                session.findById("wnd[0]").sendVKey(15)
+                SAP_ACTIVE_SESSION[session_id] = 0
+                break
+
+    pythoncom.CoInitialize()
+    xl = win32com.client.Dispatch('Excel.Application')
+    xl_id = pythoncom.CoMarshalInterThreadInterfaceInStream(pythoncom.IID_IDispatch, xl)
+    t1 = threading.Thread(target=sap_run_tread, args=[xl_id])
+    time.sleep(3)
+    t1.start()
 
 
 def sap_close() -> None:

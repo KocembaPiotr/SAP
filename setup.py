@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.12'
+VERSION = '0.0.13'
 DESCRIPTION = 'Python package to control SAP GUI scripting.'
 LONG_DESCRIPTION = '''Python package which gives user possibility to build his own
                       RPA base on SAP GUI.

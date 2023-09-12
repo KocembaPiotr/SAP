@@ -157,7 +157,10 @@ def zpp_mat(session, *args, **kwargs) -> None:
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     sapgui.sap_download_tmp_file_del()
     session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
-    session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+    if 'file_name' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").caretPosition = 4
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
