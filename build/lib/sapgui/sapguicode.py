@@ -1,7 +1,7 @@
 from sapgui import sapgui
 
 
-def zmpua25(session, *args):
+def zmpua25(session, *args) -> None:
     """
     Function to run zmpua25 code.
     :param session: parameter obtained from sapgui.
@@ -34,7 +34,7 @@ def zmpua25(session, *args):
     session.findById("wnd[0]").sendVKey(3)
 
 
-def rrp4(session, *args):
+def rrp4(session, *args) -> None:
     """
     Function to run rrp4 code.
     :param session: parameter obtained from sapgui.
@@ -82,7 +82,7 @@ def rrp4(session, *args):
     session.findById("wnd[0]").sendVKey(3)
 
 
-def rrp1(session, *args):
+def rrp1(session, *args) -> None:
     """
     Function to run rrp1 code.
     :param session: parameter obtained from sapgui.
@@ -130,7 +130,7 @@ def rrp1(session, *args):
     session.findById("wnd[0]").sendVKey(3)
 
 
-def zpp_mat(session, *args, **kwargs):
+def zpp_mat(session, *args, **kwargs) -> None:
     """
     Function to run zpp_mat code.
     :param session: parameter obtained from sapgui.
@@ -165,7 +165,7 @@ def zpp_mat(session, *args, **kwargs):
     session.findById("wnd[0]").sendVKey(3)
 
 
-def mb52(session, *args, **kwargs):
+def mb52(session, *args, **kwargs) -> None:
     """
     Function to run mb52 code.
     :param session: parameter obtained from sapgui.
@@ -190,6 +190,39 @@ def mb52(session, *args, **kwargs):
     session.findById("wnd[0]/tbar[1]/btn[45]").press()
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+    session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").caretPosition = 4
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[0]").sendVKey(3)
+    session.findById("wnd[0]").sendVKey(3)
+
+
+def me2m(session, *args, **kwargs) -> None:
+    """
+    Function to run me2m code.
+    :param session: parameter obtained from sapgui.
+    :param args: variant:str
+    :param kwargs: optional variables: date_from, date_to in format %Y-%m-%d
+    :return: None
+    """
+    session.findById("wnd[0]").maximize()
+    session.findById("wnd[0]/tbar[0]/okcd").text = "me2m"
+    session.findById("wnd[0]").sendVKey(0)
+    session.findById("wnd[0]/tbar[1]/btn[17]").press()
+    session.findById("wnd[1]/usr/txtV-LOW").text = args[0]
+    session.findById("wnd[1]/usr/txtENAME-LOW").text = ""
+    session.findById("wnd[1]").sendVKey(8)
+    if 'date_from' in kwargs:
+        session.findById("wnd[0]/usr/ctxtS_EINDT-LOW").text = kwargs['date_from']
+    if 'date_to' in kwargs:
+        session.findById("wnd[0]/usr/ctxtS_EINDT-HIGH").text = kwargs['date_to']
+    session.findById("wnd[0]").sendVKey(8)
+    session.findById("wnd[0]/tbar[1]/btn[45]").press()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE

@@ -3,7 +3,6 @@ import subprocess
 import pandas as pd
 import time
 import os
-import re
 from typing import Self
 
 SAP_APP_PATH = r'C:\Program Files (x86)\SAP\FrontEnd\SAPgui\\'
@@ -121,16 +120,4 @@ def sap_download_tmp_file(header_row: int, tmp_file_del: bool = True,
     df.drop(label_drop, axis=1, inplace=True)
     if tmp_file_del:
         sap_download_tmp_file_del()
-    return df
-
-
-def type_convert_to_float(df: pd.DataFrame, column_names: list) -> None:
-    """
-    Function to convert data downloaded from SAP to float type
-    :param df: pandas dataframe with data from SAP
-    :param column_names: list with columns which need to be converted
-    :return: pandas dataframe with correct types
-    """
-    for column_name in column_names:
-        df[column_name] = df[column_name].apply(lambda x: float(re.sub(',', '.', re.sub(' ', '', x))))
     return df
