@@ -88,6 +88,7 @@ def sap_run_threads(func, *args, **kwargs) -> None:
                     session.createsession()
                 time.sleep(2)
                 session = connection.Children(session_id)
+                time.sleep(2*session_id)
                 func(session, *args, **kwargs)
                 if session_id != 0:
                     session.findById("wnd[0]").sendVKey(15)
@@ -98,7 +99,6 @@ def sap_run_threads(func, *args, **kwargs) -> None:
     xl_id = pythoncom.CoMarshalInterThreadInterfaceInStream(pythoncom.IID_IDispatch, xl)
     t = threading.Thread(target=sap_run_tread, args=[xl_id])
     threads.append(t)
-    time.sleep(3)
     t.start()
 
 

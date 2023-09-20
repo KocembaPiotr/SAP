@@ -64,6 +64,12 @@ def rrp4(session, *args, **kwargs) -> None:
     session.findById("wnd[1]/tbar[0]/btn[8]").press()
     session.findById("wnd[0]").sendVKey(8)
     try:
+        session.findById("wnd[1]/usr/btnBUTTON_1").press()
+        session.findById("wnd[1]/usr/btnBUTTON_1").press()
+        session.findById("wnd[1]/usr/btnBUTTON_1").press()
+    except Exception as e:
+        print(e)
+    try:
         session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").pressToolbarButton("ORGRID_TOOLBAR_EXPAND")
     except Exception as e:
         print(e)
@@ -91,6 +97,10 @@ def rrp4(session, *args, **kwargs) -> None:
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
+    try:
+        session.findById("wnd[1]/usr/btnBUTTON_2").press()
+    except Exception as e:
+        print(e)
     session.findById("wnd[0]").sendVKey(3)
 
 
@@ -111,9 +121,9 @@ def rrp1(session, *args, **kwargs) -> None:
     session.findById("wnd[1]").sendVKey(8)
     session.findById("wnd[0]/usr/ctxtSV_DTSTA").text = args[1]
     session.findById("wnd[0]/usr/ctxtSV_DTEND").text = args[2]
-    args[3].to_clipboard(index=False, header=None)
     session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSELSCR1/ssub%_SUBSCREEN_SELBLOCK:/SAPAPO/SAPLRRP_PT_ENTRY:2010/btn%_SO_MATNR_%_APP_%-VALU_PUSH").press()
     session.findById("wnd[1]/tbar[0]/btn[16]").press()
+    args[3].to_clipboard(index=False, header=None)
     session.findById("wnd[1]/tbar[0]/btn[24]").press()
     session.findById("wnd[1]/tbar[0]/btn[8]").press()
     session.findById("wnd[0]").sendVKey(8)
@@ -151,6 +161,10 @@ def rrp1(session, *args, **kwargs) -> None:
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
+    try:
+        session.findById("wnd[1]/usr/btnBUTTON_2").press()
+    except Exception as e:
+        print(e)
     session.findById("wnd[0]").sendVKey(3)
 
 
