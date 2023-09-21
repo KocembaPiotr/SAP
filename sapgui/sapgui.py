@@ -105,7 +105,7 @@ def sap_run_threads(func, *args, **kwargs) -> None:
 def sap_run_threads_wait() -> None:
     """
     Function to wait for all threads to finish
-    :return:
+    :return: None
     """
     for x in threads:
         x.join()
@@ -147,8 +147,8 @@ def sap_download_tmp_file(header_row: int, tmp_file_del: bool = True,
     :param file_path: path of the file which will be considered
     :return: None
     """
-    df = pd.read_csv(file_path+file_name, header=header_row,
-                     delimiter="\t", encoding='unicode_escape',
+    df = pd.read_csv(file_path + file_name, header=header_row, engine='python',
+                     delimiter='\t', encoding='unicode_escape', index_col=False,
                      on_bad_lines='skip', dtype=dtypes)
     label_drop = [x for x in df if 'Unnamed' in x]
     df.drop(label_drop, axis=1, inplace=True)
