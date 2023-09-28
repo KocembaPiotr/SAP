@@ -10,7 +10,6 @@ SAP_APP_PATH = r'C:\Program Files (x86)\SAP\FrontEnd\SAPgui\\'
 SAP_APP_FILE = 'saplogon.exe'
 SAP_TMP_PATH = r'C:\temp\\'
 SAP_TMP_FILE = 'tmp.txt'
-SAP_ACTIVE_SESSION = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
 
 threads = []
 
@@ -78,22 +77,17 @@ def sap_run_threads(func, *args, **kwargs) -> None:
         sapgui = win32com.client.GetObject("SAPGUI")
         application = sapgui.GetScriptingEngine
         connection = application.Children(0)
-        while 0 not in SAP_ACTIVE_SESSION.values():
-            time.sleep(10)
-        for session_id, session_active in SAP_ACTIVE_SESSION.items():
-            if session_active == 0:
-                SAP_ACTIVE_SESSION[session_id] = 1
-                session = connection.Children(0)
-                if session_id != 0:
-                    session.createsession()
-                time.sleep(2)
-                session = connection.Children(session_id)
-                time.sleep(2*session_id)
-                func(session, *args, **kwargs)
-                if session_id != 0:
-                    session.findById("wnd[0]").sendVKey(15)
-                SAP_ACTIVE_SESSION[session_id] = 0
-                break
+        session = connection.Children(0)
+        if kwargs['session_id'] != 0:
+            session.createsession()
+        time.sleep(3)
+        session = connection.Children(kwargs['session_id'])
+        if 'run_wait' in kwargs:
+            time.sleep(kwargs['run_wait'])
+        func(session, *args, **kwargs)
+        if kwargs['session_id'] != 0:
+            session.findById("wnd[0]").sendVKey(15)
+
     pythoncom.CoInitialize()
     xl = win32com.client.Dispatch('Excel.Application')
     xl_id = pythoncom.CoMarshalInterThreadInterfaceInStream(pythoncom.IID_IDispatch, xl)
@@ -148,7 +142,7 @@ def sap_download_tmp_file(header_row: int, tmp_file_del: bool = True,
     :return: None
     """
     df = pd.read_csv(file_path + file_name, header=header_row, engine='python',
-                     delimiter='\t', encoding='unicode_escape', index_col=False,
+                     delimiter='\t', encoding='unicode_escape',
                      on_bad_lines='skip', dtype=dtypes)
     label_drop = [x for x in df if 'Unnamed' in x]
     df.drop(label_drop, axis=1, inplace=True)
