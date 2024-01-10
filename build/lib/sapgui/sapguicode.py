@@ -74,13 +74,13 @@ def rrp4(session, *args, **kwargs) -> None:
     except Exception as e:
         print(e)
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").pressToolbarButton("&MB_VARIANT")
-    session.findById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell").contextMenu()
-    session.findById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
-    session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").Selected = True
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").contextMenu()
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
+    session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").selected = True
     session.findById("wnd[2]/usr/txtGS_SEARCH-VALUE").text = args[4]
     session.findById("wnd[2]/tbar[0]/btn[0]").press()
     session.findById("wnd[2]/tbar[0]/btn[12]").press()
-    session.findById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell").clickCurrentCell()
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").clickCurrentCell()
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").pressToolbarContextButton("&MB_EXPORT")
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").selectContextMenuItem("&PC")
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
@@ -138,13 +138,13 @@ def rrp1(session, *args, **kwargs) -> None:
     except Exception as e:
         print(e)
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").pressToolbarButton("&MB_VARIANT")
-    session.findById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell").contextMenu()
-    session.findById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
-    session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").Selected = True
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").contextMenu()
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
+    session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").selected = True
     session.findById("wnd[2]/usr/txtGS_SEARCH-VALUE").text = args[4]
     session.findById("wnd[2]/tbar[0]/btn[0]").press()
     session.findById("wnd[2]/tbar[0]/btn[12]").press()
-    session.findById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell").clickCurrentCell()
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").clickCurrentCell()
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").pressToolbarContextButton("&MB_EXPORT")
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").selectContextMenuItem("&PC")
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
