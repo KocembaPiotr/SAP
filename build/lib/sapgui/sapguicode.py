@@ -74,10 +74,14 @@ def rrp4(session, *args, **kwargs) -> None:
     except Exception as e:
         print(e)
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").pressToolbarButton("&MB_VARIANT")
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").currentCellRow = -1
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectColumn("VARIANT")
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectedRows = ""
     session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").contextMenu()
     session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
     session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").selected = True
     session.findById("wnd[2]/usr/txtGS_SEARCH-VALUE").text = args[4]
+    session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").setFocus()
     session.findById("wnd[2]/tbar[0]/btn[0]").press()
     session.findById("wnd[2]/tbar[0]/btn[12]").press()
     session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").clickCurrentCell()
@@ -138,10 +142,14 @@ def rrp1(session, *args, **kwargs) -> None:
     except Exception as e:
         print(e)
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").pressToolbarButton("&MB_VARIANT")
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").currentCellRow = -1
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectColumn("VARIANT")
+    session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectedRows = ""
     session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").contextMenu()
     session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
     session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").selected = True
     session.findById("wnd[2]/usr/txtGS_SEARCH-VALUE").text = args[4]
+    session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").setFocus()
     session.findById("wnd[2]/tbar[0]/btn[0]").press()
     session.findById("wnd[2]/tbar[0]/btn[12]").press()
     session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").clickCurrentCell()
