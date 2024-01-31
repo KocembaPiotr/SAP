@@ -352,9 +352,9 @@ def mb51(session, *args, **kwargs) -> None:
     Function to run MB51 code
     :param session: parameter obtained from sapgui
     :param args: variant_name: str
-    :param kwargs: id_list: dataframe, date_from: str in format %y-%m-%d,
+    :param kwargs: optional variables: id_list: dataframe, date_from: str in format %y-%m-%d,
                    date_to: str in format %y-%m-%d, batch_list: dataframe,
-                   optional variables: file_path: str, file_name: str
+                   file_path: str, file_name: str
     :return: None
     """
     session.findById("wnd[0]").maximize()
