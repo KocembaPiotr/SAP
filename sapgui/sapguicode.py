@@ -345,3 +345,54 @@ def m_ld(session, *args, **kwargs) -> None:
     session.findById("wnd[0]").sendVKey(3)
     session.findById("wnd[0]").sendVKey(3)
     session.findById("wnd[0]").sendVKey(3)
+
+
+def mb51(session, *args, **kwargs) -> None:
+    """
+    Function to run MB51 code
+    :param session: parameter obtained from sapgui
+    :param args: variant_name: str
+    :param kwargs: id_list: dataframe, date_from: str in format %y-%m-%d,
+                   date_to: str in format %y-%m-%d, batch_list: dataframe,
+                   optional variables: file_path: str, file_name: str
+    :return: None
+    """
+    session.findById("wnd[0]").maximize()
+    session.findById("wnd[0]/tbar[0]/okcd").text = "MB51"
+    session.findById("wnd[0]").sendVKey(0)
+    session.findById("wnd[0]/tbar[1]/btn[17]").press()
+    session.findById("wnd[1]/usr/txtV-LOW").text = args[0]
+    session.findById("wnd[1]/usr/txtENAME-LOW").text = ""
+    session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    if 'id_list' in kwargs:
+        session.findById("wnd[0]/usr/btn%_MATNR_%_APP_%-VALU_PUSH").press()
+        kwargs['id_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
+        session.findById("wnd[1]/tbar[0]/btn[24]").press()
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    if 'date_from' in kwargs:
+        session.findById("wnd[0]/usr/ctxtBUDAT-LOW").text = kwargs['date_from']
+    if 'date_to' in kwargs:
+        session.findById("wnd[0]/usr/ctxtBUDAT-HIGH").text = kwargs['date_to']
+    if 'batch_list' in kwargs:
+        session.findById("wnd[0]/usr/btn%_CHARG_%_APP_%-VALU_PUSH").press()
+        kwargs['batch_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
+        session.findById("wnd[1]/tbar[0]/btn[24]").press()
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    session.findById("wnd[0]").sendVKey(8)
+    session.findById("wnd[0]/mbar/menu[0]/menu[1]/menu[2]").Select()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    if 'file_path' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+    if 'file_name' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[0]").sendVKey(3)
+    session.findById("wnd[0]").sendVKey(3)
