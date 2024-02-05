@@ -437,4 +437,3 @@ def zmmla11(session, *args, **kwargs) -> None:
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
     session.findById("wnd[0]").sendVKey(3)
-    session.findById("wnd[0]").sendVKey(3)
