@@ -59,6 +59,10 @@ def rrp4(session, *args, **kwargs) -> None:
     session.findById("wnd[0]/usr/ctxtSV_DTEND").text = args[2]
     args[3].to_clipboard(index=False, header=None)
     session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSELSCR1/ssub%_SUBSCREEN_SELBLOCK:/SAPAPO/SAPLRRP_PT_ENTRY:2010/btn%_SO_MATNR_%_APP_%-VALU_PUSH").press()
+    try:
+        session.findById("wnd[0]").sendVKey(0)
+    except Exception as e:
+        print(e)
     session.findById("wnd[1]/tbar[0]/btn[16]").press()
     session.findById("wnd[1]/tbar[0]/btn[24]").press()
     session.findById("wnd[1]/tbar[0]/btn[8]").press()
@@ -736,6 +740,52 @@ def me80fn(session, *args, **kwargs) -> None:
     session.findById("wnd[0]/usr/cntlMEALV_GRID_CONTROL_80FN/shellcont/shell").pressToolbarContextButton("&MB_EXPORT")
     session.findById("wnd[0]/usr/cntlMEALV_GRID_CONTROL_80FN/shellcont/shell").selectContextMenuItem("&PC")
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    sapgui.sap_download_tmp_file_del()
+    if 'file_path' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+    if 'file_name' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[0]").sendVKey(3)
+    try:
+        session.findById("wnd[1]/usr/btnBUTTON_2").press()
+    except Exception as e:
+        print(e)
+    session.findById("wnd[0]").sendVKey(3)
+
+
+def zpoedi(session, *args, **kwargs) -> None:
+    """
+    Function to run zpoedi code
+    :param session: parameter obtained from sapgui
+    :param args: variant: str
+    :param kwargs: optional variables: id_list: dataframe, file_path: str, file_name: str
+    :return: None
+    """
+    session.findById("wnd[0]").maximize()
+    session.findById("wnd[0]/tbar[0]/okcd").text = "ZPOEDI"
+    session.findById("wnd[0]").sendVKey(0)
+    session.findById("wnd[0]/tbar[1]/btn[17]").press()
+    session.findById("wnd[1]/usr/txtV-LOW").text = args[0]
+    session.findById("wnd[1]/usr/txtENAME-LOW").text = ""
+    session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    if 'id_list' in kwargs:
+        session.findById("wnd[0]/usr/ctxtEN_EBELN-LOW").text = "1"
+        session.findById("wnd[0]/usr/btn%_EN_EBELN_%_APP_%-VALU_PUSH").press()
+        kwargs['id_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
+        session.findById("wnd[1]/tbar[0]/btn[24]").press()
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    session.findById("wnd[0]").sendVKey(8)
+    session.findById("wnd[0]/mbar/menu[0]/menu[3]/menu[2]").Select()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     sapgui.sap_download_tmp_file_del()
     if 'file_path' in kwargs:
