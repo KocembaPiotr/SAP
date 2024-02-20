@@ -804,3 +804,53 @@ def zpoedi(session, *args, **kwargs) -> None:
     except Exception as e:
         print(e)
     session.findById("wnd[0]").sendVKey(3)
+
+
+def zca07(session, *args, **kwargs) -> None:
+    """
+    Function to run zca07 code
+    :param session: parameter obtained from sapgui
+    :param args: dataframe
+    :param kwargs: optional variables: date_from: str in format %y-%m-%d, date_to: str in format %y-%m-%d,
+                   file_path: str, file_name: str
+    :return: None
+    """
+    session.findById("wnd[0]").maximize()
+    session.findById("wnd[0]/tbar[0]/okcd").text = "zca07"
+    session.findById("wnd[0]").sendVKey(0)
+    session.findById("wnd[0]/usr/ctxtS_WERKS-LOW").text = "PLP2"
+    if 'date_from' in kwargs:
+        session.findById("wnd[0]/usr/ctxtS_DATUV-LOW").text = kwargs['date_from']
+    if 'date_from' in kwargs:
+        session.findById("wnd[0]/usr/ctxtS_DATUV-HIGH").text = kwargs['date_from']
+    session.findById("wnd[0]/usr/ctxtS_DATUV-HIGH").SetFocus()
+    session.findById("wnd[0]/usr/btn%_S_MATNR_%_APP_%-VALU_PUSH").press()
+    args[0].to_clipboard(index=False, header=None)
+    session.findById("wnd[1]/tbar[0]/btn[16]").press()
+    session.findById("wnd[1]/tbar[0]/btn[24]").press()
+    session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    session.findById("wnd[0]/usr/radP_CHECK8").Select()
+    session.findById("wnd[0]/usr/radP_CHECK8").SetFocus()
+    session.findById("wnd[0]/usr/txtP_DAYS").text = "999"
+    session.findById("wnd[0]").sendVKey(8)
+    session.findById("wnd[0]/tbar[1]/btn[45]").press()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    sapgui.sap_download_tmp_file_del()
+    if 'file_path' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+    if 'file_name' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[0]").sendVKey(3)
+    try:
+        session.findById("wnd[1]/usr/btnBUTTON_2").press()
+    except Exception as e:
+        print(e)
+    session.findById("wnd[0]").sendVKey(3)
