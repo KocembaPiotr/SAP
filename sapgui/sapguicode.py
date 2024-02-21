@@ -25,14 +25,15 @@ def zmpua25(session, *args, **kwargs) -> None:
     session.findById("wnd[0]/tbar[1]/btn[45]").press()
     session.findById(r"wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").select()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    sapgui.sap_download_tmp_file_del()
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
@@ -93,14 +94,15 @@ def rrp4(session, *args, **kwargs) -> None:
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").selectContextMenuItem("&PC")
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    sapgui.sap_download_tmp_file_del()
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
@@ -161,14 +163,15 @@ def rrp1(session, *args, **kwargs) -> None:
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").selectContextMenuItem("&PC")
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    sapgui.sap_download_tmp_file_del()
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
@@ -205,14 +208,15 @@ def zpp_mat(session, *args, **kwargs) -> None:
     session.findById("wnd[0]/tbar[1]/btn[45]").press()
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    sapgui.sap_download_tmp_file_del()
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").caretPosition = 4
@@ -252,8 +256,10 @@ def mb52(session, *args, **kwargs) -> None:
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
@@ -291,8 +297,10 @@ def me2m(session, *args, **kwargs) -> None:
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
@@ -339,8 +347,10 @@ def m_ld(session, *args, **kwargs) -> None:
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
@@ -393,8 +403,10 @@ def mb51(session, *args, **kwargs) -> None:
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
@@ -432,8 +444,10 @@ def zmmla11(session, *args, **kwargs) -> None:
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
@@ -477,8 +491,10 @@ def zka02(session, *args, **kwargs) -> None:
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
@@ -492,8 +508,10 @@ def coois(session, *args, **kwargs) -> None:
     """
     Function to run COOIS code
     :param session: parameter obtained from sapgui
-    :param args: variant_name: str, id_list: dataframe
-    :param kwargs: optional variables: file_path: str, file_name: str
+    :param args: variant_name: str
+    :param kwargs: optional variables: order_list: dataframe,
+                   date_from: str in format %y-%m-%d, date_to: str in format %y-%m-%d,
+                   file_path: str, file_name: str
     :return: None
     """
     session.findById("wnd[0]").maximize()
@@ -509,6 +527,10 @@ def coois(session, *args, **kwargs) -> None:
         session.findById("wnd[1]/tbar[0]/btn[16]").press()
         session.findById("wnd[1]/tbar[0]/btn[24]").press()
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    if 'date_from' in kwargs:
+        session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSEL_00/ssub%_SUBSCREEN_SELBLOCK:PPIO_ENTRY:1200/ctxtS_ECKST-LOW").text = kwargs['date_from']
+    if 'date_to' in kwargs:
+        session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSEL_00/ssub%_SUBSCREEN_SELBLOCK:PPIO_ENTRY:1200/ctxtS_ECKST-HIGH").text = kwargs['date_to']
     session.findById("wnd[0]").sendVKey(8)
     try:
         session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").pressToolbarButton("&NAVIGATION_PROFILE_TOOLBAR_EXPAND")
@@ -524,8 +546,10 @@ def coois(session, *args, **kwargs) -> None:
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
@@ -585,8 +609,10 @@ def zcp04(session, *args, **kwargs) -> None:
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
@@ -636,8 +662,10 @@ def me5a(session, *args, **kwargs) -> None:
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
@@ -684,14 +712,15 @@ def rrp7(session, *args, **kwargs) -> None:
     session.findById("wnd[0]/usr/subREQMTS:/SAPAPO/SAPLRRP_REQMTS:3000/cntlALV_GRID_REQMTS/shellcont/shell").selectContextMenuItem("&PC")
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    sapgui.sap_download_tmp_file_del()
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
@@ -725,36 +754,40 @@ def me80fn(session, *args, **kwargs) -> None:
         session.findById("wnd[1]/tbar[0]/btn[24]").press()
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
     session.findById("wnd[0]").sendVKey(8)
-    if 'layout' in kwargs:
-        session.findById("wnd[0]/usr/cntlMEALV_GRID_CONTROL_80FN/shellcont/shell").pressToolbarButton("&MB_VARIANT")
-        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").currentCellRow = -1
-        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectColumn("VARIANT")
-        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").contextMenu()
-        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
-        session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").Selected = True
-        session.findById("wnd[2]/usr/txtGS_SEARCH-VALUE").text = kwargs['layout']
-        session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").SetFocus()
-        session.findById("wnd[2]/tbar[0]/btn[0]").press()
-        session.findById("wnd[2]/tbar[0]/btn[12]").press()
-        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").clickCurrentCell()
-    session.findById("wnd[0]/usr/cntlMEALV_GRID_CONTROL_80FN/shellcont/shell").pressToolbarContextButton("&MB_EXPORT")
-    session.findById("wnd[0]/usr/cntlMEALV_GRID_CONTROL_80FN/shellcont/shell").selectContextMenuItem("&PC")
-    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
-    session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    sapgui.sap_download_tmp_file_del()
-    if 'file_path' in kwargs:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
-    else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
-    if 'file_name' in kwargs:
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
-    else:
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
-    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
-    session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    session.findById("wnd[0]").sendVKey(3)
     try:
-        session.findById("wnd[1]/usr/btnBUTTON_2").press()
+        if 'layout' in kwargs:
+            session.findById("wnd[0]/usr/cntlMEALV_GRID_CONTROL_80FN/shellcont/shell").pressToolbarButton("&MB_VARIANT")
+            session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").currentCellRow = -1
+            session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectColumn("VARIANT")
+            session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").contextMenu()
+            session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
+            session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").Selected = True
+            session.findById("wnd[2]/usr/txtGS_SEARCH-VALUE").text = kwargs['layout']
+            session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").SetFocus()
+            session.findById("wnd[2]/tbar[0]/btn[0]").press()
+            session.findById("wnd[2]/tbar[0]/btn[12]").press()
+            session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").clickCurrentCell()
+        session.findById("wnd[0]/usr/cntlMEALV_GRID_CONTROL_80FN/shellcont/shell").pressToolbarContextButton("&MB_EXPORT")
+        session.findById("wnd[0]/usr/cntlMEALV_GRID_CONTROL_80FN/shellcont/shell").selectContextMenuItem("&PC")
+        session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
+        session.findById("wnd[1]/tbar[0]/btn[0]").press()
+        if 'file_path' in kwargs:
+            session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
+        else:
+            session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        if 'file_name' in kwargs:
+            sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
+            session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+        else:
+            sapgui.sap_download_tmp_file_del()
+            session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+        session.findById("wnd[1]/tbar[0]/btn[0]").press()
+        session.findById("wnd[0]").sendVKey(3)
+        try:
+            session.findById("wnd[1]/usr/btnBUTTON_2").press()
+        except Exception as e:
+            print(e)
     except Exception as e:
         print(e)
     session.findById("wnd[0]").sendVKey(3)
@@ -787,14 +820,15 @@ def zpoedi(session, *args, **kwargs) -> None:
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    sapgui.sap_download_tmp_file_del()
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
@@ -821,8 +855,8 @@ def zca07(session, *args, **kwargs) -> None:
     session.findById("wnd[0]/usr/ctxtS_WERKS-LOW").text = "PLP2"
     if 'date_from' in kwargs:
         session.findById("wnd[0]/usr/ctxtS_DATUV-LOW").text = kwargs['date_from']
-    if 'date_from' in kwargs:
-        session.findById("wnd[0]/usr/ctxtS_DATUV-HIGH").text = kwargs['date_from']
+    if 'date_to' in kwargs:
+        session.findById("wnd[0]/usr/ctxtS_DATUV-HIGH").text = kwargs['date_to']
     session.findById("wnd[0]/usr/ctxtS_DATUV-HIGH").SetFocus()
     session.findById("wnd[0]/usr/btn%_S_MATNR_%_APP_%-VALU_PUSH").press()
     args[0].to_clipboard(index=False, header=None)
@@ -837,14 +871,15 @@ def zca07(session, *args, **kwargs) -> None:
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    sapgui.sap_download_tmp_file_del()
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
     if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
+        sapgui.sap_download_tmp_file_del()
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
