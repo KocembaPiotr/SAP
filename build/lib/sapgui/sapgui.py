@@ -108,7 +108,7 @@ def sap_run_threads_wait() -> None:
 def sap_download_tmp_file_del(file_name: str = SAP_TMP_FILE,
                               file_path: str = SAP_TMP_PATH) -> None:
     """
-    Funtion to remove temporary downloaded file according to variable SAP_TMP_FILE
+    Function to remove temporary downloaded file according to variable SAP_TMP_FILE
     :param file_name: name of the file which will be considered
     :param file_path: path of the file which will be considered
     :return: None
@@ -146,6 +146,7 @@ def sap_download_tmp_file(header_row: int, tmp_file_del: bool = True,
                      on_bad_lines='skip', dtype=dtypes)
     label_drop = [x for x in df if 'Unnamed' in x]
     df.drop(label_drop, axis=1, inplace=True)
+    df.columns = df.columns.str.strip()
     if tmp_file_del:
         sap_download_tmp_file_del(file_name, file_path)
     return df

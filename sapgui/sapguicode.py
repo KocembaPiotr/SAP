@@ -229,8 +229,8 @@ def mb52(session, *args, **kwargs) -> None:
     """
     Function to run mb52 code
     :param session: parameter obtained from sapgui
-    :param args: variant:str, variable: DataFrame according to option
-    :param kwargs: option:str, to change function behaviour
+    :param args: variant: str
+    :param kwargs: optional variables: id_list: dataframe, file_path: str, file_name: str
     :return: None
     """
     session.findById("wnd[0]").maximize()
@@ -240,9 +240,9 @@ def mb52(session, *args, **kwargs) -> None:
     session.findById("wnd[1]/usr/txtV-LOW").text = args[0]
     session.findById("wnd[1]/usr/txtENAME-LOW").text = ""
     session.findById("wnd[1]/tbar[0]/btn[8]").press()
-    if 'option' in kwargs and kwargs['option'] == 'ID':
-        args[1].to_clipboard(index=False, header=None)
+    if 'id_list' in kwargs:
         session.findById("wnd[0]/usr/btn%_MATNR_%_APP_%-VALU_PUSH").press()
+        kwargs['id_list'].to_clipboard(index=False, header=None)
         session.findById("wnd[1]/tbar[0]/btn[16]").press()
         session.findById("wnd[1]/tbar[0]/btn[24]").press()
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
