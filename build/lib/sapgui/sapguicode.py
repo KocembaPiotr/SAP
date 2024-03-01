@@ -892,11 +892,10 @@ def zca07(session, *args, **kwargs) -> None:
     session.findById("wnd[0]").sendVKey(3)
 
 
-def zmima18(session, *args, **kwargs) -> None:
+def zmima18(session, **kwargs) -> None:
     """
     Function to run zmima18 code
     :param session: parameter obtained from sapgui
-    :param args: dataframe
     :param kwargs: variant: str, file_path: str, file_name: str
     :return: None
     """
@@ -910,6 +909,61 @@ def zmima18(session, *args, **kwargs) -> None:
         session.findById("wnd[1]").sendVKey(8)
     session.findById("wnd[0]").sendVKey(8)
     session.findById("wnd[0]/tbar[1]/btn[45]").press()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    if 'file_path' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+    if 'file_name' in kwargs:
+        sapgui.sap_download_tmp_file_del(file_name=kwargs['file_name'])
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+    else:
+        sapgui.sap_download_tmp_file_del()
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[0]").sendVKey(3)
+    session.findById("wnd[0]").sendVKey(3)
+
+
+def ppl1(session, **kwargs) -> None:
+    """
+    Function to run ppl1 code
+    :param session: parameter obtained from sapgui
+    :param kwargs: optional variables: variant: str, date_from: str in format %y-%m-%d,
+                                       date_to: str in format %y-%m-%d, layout: str
+                                       file_path: str, file_name: str
+    :return: None
+    """
+    session.findById("wnd[0]").maximize()
+    session.findById("wnd[0]/tbar[0]/okcd").text = "/n/sapapo/ppl1"
+    session.findById("wnd[0]").sendVKey(0)
+    if 'variant' in kwargs:
+        session.findById("wnd[0]/tbar[1]/btn[17]").press()
+        session.findById("wnd[1]/usr/txtV-LOW").text = kwargs['variant']
+        session.findById("wnd[1]/usr/txtENAME-LOW").text = ""
+        session.findById("wnd[1]").sendVKey(8)
+    if 'date_from' in kwargs:
+        session.findById("wnd[0]/usr/txtSV_DTSTA").text = kwargs['date_from']
+    if 'date_to' in kwargs:
+        session.findById("wnd[0]/usr/txtSV_DTEND").text = kwargs['date_to']
+    session.findById("wnd[0]").sendVKey(8)
+    if 'layout' in kwargs:
+        session.findById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").pressToolbarButton("&MB_VARIANT")
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").currentCellRow = -1
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectColumn("VARIANT")
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").contextMenu()
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
+        session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").Selected = True
+        session.findById("wnd[2]/usr/txtGS_SEARCH-VALUE").text = kwargs['layout']
+        session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").SetFocus()
+        session.findById("wnd[2]/tbar[0]/btn[0]").press()
+        session.findById("wnd[2]/tbar[0]/btn[12]").press()
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").clickCurrentCell()
+    session.findById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").pressToolbarContextButton("&MB_EXPORT")
+    session.findById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").selectContextMenuItem("&PC")
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
