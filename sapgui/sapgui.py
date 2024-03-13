@@ -105,8 +105,7 @@ def sap_run_threads_wait() -> None:
         x.join()
 
 
-def sap_download_tmp_file_del(file_name: str = SAP_TMP_FILE,
-                              file_path: str = SAP_TMP_PATH) -> None:
+def sap_del_tmp_file(file_name: str = SAP_TMP_FILE, file_path: str = SAP_TMP_PATH) -> None:
     """
     Function to remove temporary downloaded file according to variable SAP_TMP_FILE
     :param file_name: name of the file which will be considered
@@ -117,7 +116,7 @@ def sap_download_tmp_file_del(file_name: str = SAP_TMP_FILE,
         os.remove(file_path+file_name)
 
 
-def sap_download_tmp_files_del(sap_tmp_files: list, file_path: str = SAP_TMP_PATH) -> None:
+def sap_del_tmp_files(sap_tmp_files: list, file_path: str = SAP_TMP_PATH) -> None:
     """
     Function to remove indicated list of downloaded files
     :param sap_tmp_files: list of files
@@ -129,9 +128,8 @@ def sap_download_tmp_files_del(sap_tmp_files: list, file_path: str = SAP_TMP_PAT
             os.remove(file_path+file)
 
 
-def sap_download_tmp_file(header_row: int, tmp_file_del: bool = True,
-                          dtypes: dict = None, file_name: str = SAP_TMP_FILE,
-                          file_path: str = SAP_TMP_PATH) -> pd.DataFrame:
+def sap_download_data(header_row: int, tmp_file_del: bool = True, dtypes: dict = None,
+                      file_name: str = SAP_TMP_FILE, file_path: str = SAP_TMP_PATH) -> pd.DataFrame:
     """
     Function to extract downloaded SAP file to pandas dataframe
     :param header_row: number of row where is header fo data
@@ -148,5 +146,5 @@ def sap_download_tmp_file(header_row: int, tmp_file_del: bool = True,
     df.drop(label_drop, axis=1, inplace=True)
     df.columns = df.columns.str.strip()
     if tmp_file_del:
-        sap_download_tmp_file_del(file_name, file_path)
+        sap_del_tmp_file(file_name, file_path)
     return df
