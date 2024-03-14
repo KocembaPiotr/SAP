@@ -1055,7 +1055,7 @@ def zkpc03(session, **kwargs) -> None:
     """
     Function to run zkpc03 code
     :param session: parameter obtained from sapgui
-    :param kwargs: optional: variant: str, id_list: str, file_path: str, file_name: str
+    :param kwargs: optional: variant: str, id_list: dataframe, file_path: str, file_name: str
     :return: None
     """
     session.findById("wnd[0]").maximize()
@@ -1090,4 +1090,61 @@ def zkpc03(session, **kwargs) -> None:
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
+    session.findById("wnd[0]").sendVKey(3)
+
+
+def cewb(session, **kwargs) -> None:
+    """
+    Function to run cewb code
+    :param session: parameter obtained from sapgui
+    :param kwargs: optional: valid_date: str in format %y-%m-%d, id_list: dataframe, layout: str,
+                             file_path: str, file_name: str
+    :return: None
+    """
+    session.findById("wnd[0]").maximize()
+    session.findById("wnd[0]/tbar[0]/okcd").text = "CEWB"
+    session.findById("wnd[0]").sendVKey(0)
+    session.findById("wnd[0]/usr/subWORKAREA:SAPLCPSC:1150/btnBUTTON_CHANGE").press()
+    session.findById("wnd[1]").sendVKey(4)
+    session.findById("wnd[2]").sendVKey(2)
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    if 'valid_date' in kwargs:
+        session.findById("wnd[0]/usr/subVALIDITY:SAPLCPSC:2100/ctxtCWB_VALIDITY-DATUV").text = kwargs['valid_date']
+        session.findById("wnd[0]/usr/subVALIDITY:SAPLCPSC:2100/ctxtCWB_VALIDITY-DATUV").SetFocus()
+    if 'id_list' in kwargs:
+        kwargs['id_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[0]/usr/subSELECTION_CRITERIA:SAPLCPSC:1250/tabsTAB_STRIP_SEL/tabpBOMS/ssubSUBPAGE:SAPLCPSC:3340/btn%_MBMMATNR_%_APP_%-VALU_PUSH").press()
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
+        session.findById("wnd[1]/tbar[0]/btn[24]").press()
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    session.findById("wnd[0]").sendVKey(8)
+    session.findById("wnd[0]/tbar[0]/btn[86]").press()
+    if 'layout' in kwargs:
+        session.findById("wnd[0]/tbar[1]/btn[33]").press()
+        session.findById("wnd[1]/usr/lbl[1,1]").setFocus()
+        session.findById("wnd[1]").sendVKey(71)
+        session.findById("wnd[2]/usr/txtRSYSF-STRING").text = kwargs['layout']
+        session.findById("wnd[2]/tbar[0]/btn[0]").press()
+        session.findById("wnd[3]/usr/lbl[1,2]").setFocus()
+        session.findById("wnd[3]").sendVKey(2)
+        session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[0]/tbar[1]/btn[45]").press()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    if 'file_path' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+    if 'file_name' in kwargs:
+        sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+    else:
+        sapgui.sap_del_tmp_file()
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[0]").sendVKey(3)
+    session.findById("wnd[0]").sendVKey(3)
+    session.findById("wnd[1]/usr/btnSPOP-OPTION1").press()
     session.findById("wnd[0]").sendVKey(3)
