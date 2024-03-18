@@ -1148,3 +1148,47 @@ def cewb(session, **kwargs) -> None:
     session.findById("wnd[0]").sendVKey(3)
     session.findById("wnd[1]/usr/btnSPOP-OPTION1").press()
     session.findById("wnd[0]").sendVKey(3)
+
+
+def s_p99_41000062(session, **kwargs) -> None:
+    """
+    Function to run S_P99_41000062 code
+    :param session:  parameter obtained from sapgui
+    :param kwargs: optional: plant: str, id_list: dataframe, currency: str, layout: str,
+                             file_path: str, file_name: str
+    :return: None
+    """
+    session.findById("wnd[0]").maximize()
+    session.findById("wnd[0]/tbar[0]/okcd").text = "S_P99_41000062"
+    session.findById("wnd[0]").sendVKey(0)
+    if 'plant' in kwargs:
+        session.findById("wnd[0]/usr/ctxtP_WERKS").text = kwargs['plant']
+    if 'id_list' in kwargs:
+        kwargs['id_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[0]/usr/btn%_R_MATNR_%_APP_%-VALU_PUSH").press()
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
+        session.findById("wnd[1]/tbar[0]/btn[24]").press()
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    if 'currency' in kwargs:
+        session.findById("wnd[0]/usr/ctxtP_CURTP").text = kwargs['currency']
+    if 'layout' in kwargs:
+        session.findById("wnd[0]/usr/ctxtP_VARIAN").text = kwargs['layout']
+    session.findById("wnd[0]").sendVKey(8)
+    session.findById("wnd[0]/tbar[1]/btn[45]").press()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    if 'file_path' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+    if 'file_name' in kwargs:
+        sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+    else:
+        sapgui.sap_del_tmp_file()
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[0]").sendVKey(3)
+    session.findById("wnd[0]").sendVKey(3)
