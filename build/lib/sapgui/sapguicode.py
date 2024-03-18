@@ -1192,3 +1192,40 @@ def s_p99_41000062(session, **kwargs) -> None:
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
     session.findById("wnd[0]").sendVKey(3)
+
+
+def zc05h(session, **kwargs) -> None:
+    """
+    Function to run zc05H code
+    :param session: parameter obtained from sapgui
+    :param kwargs: optional: variant: str, variant_user: str, file_path: str, file_name: str
+    :return: None
+    """
+    session.findById("wnd[0]").maximize()
+    session.findById("wnd[0]/tbar[0]/okcd").text = "zc05H"
+    session.findById("wnd[0]").sendVKey(0)
+    session.findById("wnd[0]/tbar[1]/btn[40]").press()
+    if 'variant' in kwargs:
+        session.findById("wnd[1]/usr/sub:SAPLSPO4:0300/ctxtSVALD-VALUE[0,21]").text = kwargs['variant']
+    if 'variant_user' in kwargs:
+        session.findById("wnd[1]/usr/sub:SAPLSPO4:0300/ctxtSVALD-VALUE[1,21]").text = kwargs['variant_user']
+    session.findById("wnd[1]").sendVKey(0)
+    session.findById("wnd[0]").sendVKey(8)
+    session.findById("wnd[0]/tbar[1]/btn[45]").press()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    if 'file_path' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+    if 'file_name' in kwargs:
+        sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+    else:
+        sapgui.sap_del_tmp_file()
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[0]").sendVKey(3)
+    session.findById("wnd[0]").sendVKey(3)
