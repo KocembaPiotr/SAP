@@ -499,6 +499,10 @@ def zka02(session, **kwargs) -> None:
         session.findById("wnd[2]/tbar[0]/btn[24]").press()
         session.findById("wnd[2]/tbar[0]/btn[8]").press()
     session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    try:
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    except Exception as e:
+        print(e)
     session.findById("wnd[1]/usr/cntlCKKK_0200_CUSTOM_CTRL/shellcont/shell").selectAll()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(8)
