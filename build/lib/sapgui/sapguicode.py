@@ -141,9 +141,14 @@ def rrp1(session, **kwargs) -> None:
     if 'date_to' in kwargs:
         session.findById("wnd[0]/usr/ctxtSV_DTEND").text = kwargs['date_to']
     if 'id_list' in kwargs:
-        session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSELSCR1/ssub%_SUBSCREEN_SELBLOCK:/SAPAPO/SAPLRRP_PT_ENTRY:2010/btn%_SO_MATNR_%_APP_%-VALU_PUSH").press()
-        session.findById("wnd[1]/tbar[0]/btn[16]").press()
         kwargs['id_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSELSCR1/ssub%_SUBSCREEN_SELBLOCK:/SAPAPO/SAPLRRP_PT_ENTRY:2010/btn%_SO_MATNR_%_APP_%-VALU_PUSH").press()
+        try:
+            session.findById("wnd[0]").sendVKey(0)
+            session.findById("wnd[0]").sendVKey(0)
+        except Exception as e:
+            print(e)
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
         session.findById("wnd[1]/tbar[0]/btn[24]").press()
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
         session.findById("wnd[0]").sendVKey(8)
