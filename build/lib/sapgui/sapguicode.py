@@ -1085,24 +1085,29 @@ def zkpc03(session, **kwargs) -> None:
         session.findById("wnd[1]/tbar[0]/btn[24]").press()
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
     session.findById("wnd[0]").sendVKey(8)
-    session.findById("wnd[0]/tbar[1]/btn[45]").press()
-    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").select()
-    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").setFocus()
-    session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    if 'file_path' in kwargs:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
-    else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
-    if 'file_name' in kwargs:
-        sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
-    else:
-        sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
-    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
-    session.findById("wnd[1]/tbar[0]/btn[0]").press()
-    session.findById("wnd[0]").sendVKey(3)
-    session.findById("wnd[0]").sendVKey(3)
+    try:
+        session.findById("wnd[0]/tbar[1]/btn[45]").press()
+        session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").select()
+        session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").setFocus()
+        session.findById("wnd[1]/tbar[0]/btn[0]").press()
+        if 'file_path' in kwargs:
+            session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
+        else:
+            session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        if 'file_name' in kwargs:
+            sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
+            session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+        else:
+            sapgui.sap_del_tmp_file()
+            session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+        session.findById("wnd[1]/tbar[0]/btn[0]").press()
+        session.findById("wnd[0]").sendVKey(3)
+        session.findById("wnd[0]").sendVKey(3)
+    except Exception as e:
+        print(e)
+        session.findById("wnd[0]").sendVKey(0)
+        session.findById("wnd[0]").sendVKey(3)
 
 
 def cewb(session, **kwargs) -> None:
