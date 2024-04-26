@@ -887,6 +887,11 @@ def zca07(session, **kwargs) -> None:
     session.findById("wnd[0]").maximize()
     session.findById("wnd[0]/tbar[0]/okcd").text = "zca07"
     session.findById("wnd[0]").sendVKey(0)
+    if 'variant' in kwargs:
+        session.findById("wnd[0]/tbar[1]/btn[17]").press()
+        session.findById("wnd[1]/usr/txtV-LOW").text = kwargs['variant']
+        session.findById("wnd[1]/usr/txtENAME-LOW").text = ''
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
     if 'plant' in kwargs:
         session.findById("wnd[0]/usr/ctxtS_WERKS-LOW").text = kwargs['plant']
     if 'date_from' in kwargs:
