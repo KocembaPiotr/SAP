@@ -39,7 +39,8 @@ def sap_close() -> None:
     Method to close all SAP instances.
     :return: None.
     """
-    os.system(f'taskkill /F /IM {SAP_APP_FILE}')
+    subprocess.run(['taskkill', '/F', '/IM', SAP_APP_FILE], stdout=subprocess.DEVNULL,
+                   stderr=subprocess.DEVNULL, shell=True)
 
 
 def sap_run(func, *args, **kwargs) -> None:
