@@ -21,7 +21,7 @@ def sap_open(sap_module: dict) -> None:
     :return: None
     """
     try:
-        if SAP_APP_FILE not in str(subprocess.check_output('tasklist')):
+        if SAP_APP_FILE not in str(subprocess.check_output('tasklist', shell=True)):
             subprocess.Popen(SAP_APP_PATH + SAP_APP_FILE, shell=True)
             time.sleep(5)
         sapgui = win32com.client.GetObject("SAPGUI")
@@ -32,6 +32,7 @@ def sap_open(sap_module: dict) -> None:
             session.findById("wnd[0]").sendVKey(0)
     except Exception as e:
         print(e)
+    pass
 
 
 def sap_close() -> None:
