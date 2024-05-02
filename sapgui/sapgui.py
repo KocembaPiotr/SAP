@@ -22,7 +22,7 @@ def sap_open(sap_module: dict) -> None:
     """
     try:
         if SAP_APP_FILE not in str(subprocess.check_output('tasklist')):
-            subprocess.Popen(SAP_APP_PATH + SAP_APP_FILE)
+            subprocess.Popen(SAP_APP_PATH + SAP_APP_FILE, shell=True)
             time.sleep(5)
         sapgui = win32com.client.GetObject("SAPGUI")
         application = sapgui.GetScriptingEngine
@@ -39,8 +39,7 @@ def sap_close() -> None:
     Method to close all SAP instances.
     :return: None.
     """
-    subprocess.run(['taskkill', '/F', '/IM', SAP_APP_FILE], stdout=subprocess.DEVNULL,
-                   stderr=subprocess.DEVNULL, shell=True)
+    subprocess.run(['taskkill', '/F', '/IM', SAP_APP_FILE], shell=True)
 
 
 def sap_run(func, *args, **kwargs) -> None:
