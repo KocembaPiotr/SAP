@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sapgui
-Version: 0.0.63
+Version: 0.0.64
 Summary: Python package to control SAP GUI scripting.
 Author: Piotr Kocemba
 Author-email: <KocembaPiotr@gmail.com>
