@@ -504,6 +504,8 @@ def zka02(session, **kwargs) -> None:
         session.findById("wnd[2]/tbar[0]/btn[24]").press()
         session.findById("wnd[2]/tbar[0]/btn[8]").press()
     session.findById("wnd[1]/usr/btnIC_MORE1").press()
+    if 'costing_date' in kwargs:
+        session.findById("wnd[1]/usr/ctxtW_AMDAT").text = kwargs['costing_date']
     session.findById("wnd[1]/tbar[0]/btn[8]").press()
     try:
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
