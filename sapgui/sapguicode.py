@@ -541,6 +541,7 @@ def coois(session, **kwargs) -> None:
     :param session: parameter obtained from sapgui
     :param kwargs: optional: variant: str, order_list: dataframe,
                    date_from: str in format %Y-%m-%d, date_to: str in format %Y-%m-%d,
+                   date_act_finish_from: str in format %Y-%m-%d, date_act_finish_to: str in format %Y-%m-%d,
                    file_path: str, file_name: str
     :return: None
     """
@@ -562,6 +563,10 @@ def coois(session, **kwargs) -> None:
         session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSEL_00/ssub%_SUBSCREEN_SELBLOCK:PPIO_ENTRY:1200/ctxtS_ECKST-LOW").text = kwargs['date_from']
     if 'date_to' in kwargs:
         session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSEL_00/ssub%_SUBSCREEN_SELBLOCK:PPIO_ENTRY:1200/ctxtS_ECKST-HIGH").text = kwargs['date_to']
+    if 'date_act_finish_from' in kwargs:
+        session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSEL_00/ssub%_SUBSCREEN_SELBLOCK:PPIO_ENTRY:1200/ctxtS_ISTEN-LOW").text = kwargs['date_act_finish_from']
+    if 'date_act_finish_to' in kwargs:
+        session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSEL_00/ssub%_SUBSCREEN_SELBLOCK:PPIO_ENTRY:1200/ctxtS_ISTEN-HIGH").text = kwargs['date_act_finish_to']
     session.findById("wnd[0]").sendVKey(8)
     try:
         session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").pressToolbarButton("&NAVIGATION_PROFILE_TOOLBAR_EXPAND")
