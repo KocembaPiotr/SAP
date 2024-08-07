@@ -1265,16 +1265,21 @@ def zdisplay(session, **kwargs) -> None:
     """
     Function to run zdisplay code
     :param session: parameter obtained from sapgui
-    :param kwargs: optional: id_list: dataframe, file_path: str, file_name: str
+    :param kwargs: optional: id_list: dataframe, file_path: str, file_name: str, cell_row: str
     :return: None
     """
     session.findById("wnd[0]").maximize()
     session.findById("wnd[0]/tbar[0]/okcd").text = "zdisplay"
     session.findById("wnd[0]").sendVKey(0)
-    session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").currentCellRow = 6
-    session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").selectedRows = "6"
+    if 'cell_row' in kwargs:
+        session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").currentCellRow = kwargs['cell_row']
+        session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").selectedRows = kwargs['cell_row']
+    else:
+        session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").currentCellRow = 6
+        session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").selectedRows = "6"
     session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").clickCurrentCell()
     if 'id_list' in kwargs:
+        print('test')
         kwargs['id_list'].to_clipboard(index=False, header=None)
         session.findById("wnd[0]/usr/btn%_I1_%_APP_%-VALU_PUSH").press()
         session.findById("wnd[1]/tbar[0]/btn[16]").press()
@@ -1282,12 +1287,12 @@ def zdisplay(session, **kwargs) -> None:
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
     session.findById("wnd[0]/usr/txtMAX_SEL").text = "99999999"
     session.findById("wnd[0]/usr/txtMAX_SEL").SetFocus()
-    session.findById("wnd[0]/usr/txtMAX_SEL").caretPosition = 11
     session.findById("wnd[0]").sendVKey(8)
-    session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").currentCellRow = -1
-    session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").selectColumn("MATNR")
-    session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").contextMenu()
-    session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").selectContextMenuItem("&SORT_ASC")
+    if 'cell_row' not in kwargs:
+        session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").currentCellRow = -1
+        session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").selectColumn("MATNR")
+        session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").contextMenu()
+        session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").selectContextMenuItem("&SORT_ASC")
     session.findById("wnd[0]/tbar[1]/btn[45]").press()
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus()
