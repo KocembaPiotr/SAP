@@ -3,6 +3,7 @@ setup.py
 sapgui/__init__.py
 sapgui/sapgui.py
 sapgui/sapguicode.py
+sapgui/sapguiparam.py
 sapgui.egg-info/PKG-INFO
 sapgui.egg-info/SOURCES.txt
 sapgui.egg-info/dependency_links.txt

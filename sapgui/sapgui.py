@@ -5,11 +5,7 @@ import subprocess
 import pandas as pd
 import time
 import os
-
-SAP_APP_PATH = r'C:\Program Files\SAP\FrontEnd\SAPGUI\\'
-SAP_APP_FILE = 'saplogon.exe'
-SAP_TMP_PATH = r'C:\temp\\'
-SAP_TMP_FILE = 'tmp.txt'
+from sapgui import sapguiparam
 
 threads = []
 
@@ -21,8 +17,8 @@ def sap_open(sap_module: dict) -> None:
     :return: None
     """
     try:
-        if SAP_APP_FILE not in str(subprocess.check_output('tasklist', shell=True)):
-            subprocess.Popen(SAP_APP_PATH + SAP_APP_FILE, shell=True)
+        if sapguiparam.SAP_APP_FILE not in str(subprocess.check_output('tasklist', shell=True)):
+            subprocess.Popen(sapguiparam.SAP_APP_PATH + sapguiparam.SAP_APP_FILE, shell=True)
             time.sleep(5)
         sapgui = win32com.client.GetObject("SAPGUI")
         application = sapgui.GetScriptingEngine
@@ -40,7 +36,7 @@ def sap_close() -> None:
     Method to close all SAP instances.
     :return: None.
     """
-    subprocess.run(['taskkill', '/F', '/IM', SAP_APP_FILE], shell=True)
+    subprocess.run(['taskkill', '/F', '/IM', sapguiparam.SAP_APP_FILE], shell=True)
 
 
 def sap_run(func, *args, **kwargs) -> None:
@@ -106,7 +102,7 @@ def sap_run_threads_wait() -> None:
         x.join()
 
 
-def sap_del_tmp_file(file_name: str = SAP_TMP_FILE, file_path: str = SAP_TMP_PATH) -> None:
+def sap_del_tmp_file(file_name: str = sapguiparam.SAP_TMP_FILE, file_path: str = sapguiparam.SAP_TMP_PATH) -> None:
     """
     Function to remove temporary downloaded file according to variable SAP_TMP_FILE
     :param file_name: name of the file which will be considered
@@ -117,7 +113,7 @@ def sap_del_tmp_file(file_name: str = SAP_TMP_FILE, file_path: str = SAP_TMP_PAT
         os.remove(file_path+file_name)
 
 
-def sap_del_tmp_files(sap_tmp_files: list, file_path: str = SAP_TMP_PATH) -> None:
+def sap_del_tmp_files(sap_tmp_files: list, file_path: str = sapguiparam.SAP_TMP_PATH) -> None:
     """
     Function to remove indicated list of downloaded files
     :param sap_tmp_files: list of files
@@ -130,7 +126,7 @@ def sap_del_tmp_files(sap_tmp_files: list, file_path: str = SAP_TMP_PATH) -> Non
 
 
 def sap_download_data(header_row: int, tmp_file_del: bool = True, dtypes: dict = None,
-                      file_name: str = SAP_TMP_FILE, file_path: str = SAP_TMP_PATH) -> pd.DataFrame:
+                      file_name: str = sapguiparam.SAP_TMP_FILE, file_path: str = sapguiparam.SAP_TMP_PATH) -> pd.DataFrame:
     """
     Function to extract downloaded SAP file to pandas dataframe
     :param header_row: number of row where is header fo data
