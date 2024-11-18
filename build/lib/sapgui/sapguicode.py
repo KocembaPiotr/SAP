@@ -1,4 +1,5 @@
 from sapgui import sapgui
+from sapgui import sapguiparam
 
 
 def zmpua25(session, **kwargs) -> None:
@@ -29,13 +30,13 @@ def zmpua25(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -104,13 +105,13 @@ def rrp4(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -184,13 +185,13 @@ def rrp1(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -229,13 +230,13 @@ def zpp_mat(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").caretPosition = 4
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
@@ -272,13 +273,13 @@ def mb52(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").caretPosition = 4
@@ -314,13 +315,13 @@ def me2m(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").caretPosition = 4
@@ -368,13 +369,13 @@ def m_ld(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").caretPosition = 4
@@ -424,13 +425,13 @@ def mb51(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -466,13 +467,13 @@ def zmmla11(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").caretPosition = 4
@@ -525,13 +526,13 @@ def zka02(session, **kwargs) -> None:
         if 'file_path' in kwargs:
             session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
         else:
-            session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+            session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
         if 'file_name' in kwargs:
             sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
             session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
         else:
             sapgui.sap_del_tmp_file()
-            session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+            session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
         session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
         session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").SetFocus()
         session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").caretPosition = 4
@@ -589,13 +590,13 @@ def coois(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -653,13 +654,13 @@ def zcp04(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -707,13 +708,13 @@ def me5a(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -769,13 +770,13 @@ def rrp7(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -829,13 +830,13 @@ def me80fn(session, **kwargs) -> None:
         if 'file_path' in kwargs:
             session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
         else:
-            session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+            session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
         if 'file_name' in kwargs:
             sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
             session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
         else:
             sapgui.sap_del_tmp_file()
-            session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+            session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
         session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
         session.findById("wnd[1]/tbar[0]/btn[0]").press()
         session.findById("wnd[0]").sendVKey(3)
@@ -878,13 +879,13 @@ def zpoedi(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -934,13 +935,13 @@ def zca07(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -974,13 +975,13 @@ def zmima18(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -1029,13 +1030,13 @@ def ppl1(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -1075,13 +1076,13 @@ def zcs11h(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -1118,13 +1119,13 @@ def zkpc03(session, **kwargs) -> None:
         if 'file_path' in kwargs:
             session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
         else:
-            session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+            session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
         if 'file_name' in kwargs:
             sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
             session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
         else:
             sapgui.sap_del_tmp_file()
-            session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+            session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
         session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
         session.findById("wnd[1]/tbar[0]/btn[0]").press()
         session.findById("wnd[0]").sendVKey(3)
@@ -1177,13 +1178,13 @@ def cewb(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -1223,13 +1224,13 @@ def s_p99_41000062(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -1260,13 +1261,13 @@ def zc05h(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -1312,13 +1313,13 @@ def zdisplay(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -1348,13 +1349,13 @@ def mb5m(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -1395,13 +1396,13 @@ def zcpo_mkal(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]").sendVKey(3)
@@ -1447,13 +1448,13 @@ def ppt1(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]/tbar[0]/btn[15]").press()
@@ -1487,13 +1488,13 @@ def mb5s(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]/tbar[0]/btn[15]").press()
@@ -1542,13 +1543,13 @@ def vl06f(session, **kwargs) -> None:
     if 'file_path' in kwargs:
         session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
     else:
-        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapgui.SAP_TMP_PATH
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
     if 'file_name' in kwargs:
         sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
         session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
     else:
         sapgui.sap_del_tmp_file()
-        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapgui.SAP_TMP_FILE
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
     session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]/tbar[0]/btn[15]").press()
