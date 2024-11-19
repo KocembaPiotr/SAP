@@ -1554,3 +1554,64 @@ def vl06f(session, **kwargs) -> None:
     session.findById("wnd[1]/tbar[0]/btn[0]").press()
     session.findById("wnd[0]/tbar[0]/btn[15]").press()
     session.findById("wnd[0]").sendVKey(3)
+
+
+def zcpot_rrp(session, **kwargs) -> None:
+    """
+    Function to run zcpot_rrp_report code
+    :param session: parameter obtained from sapgui
+    :param kwargs: optional: variant: str, layout: str, id_list: dataframe
+                             date_from: str in format %y-%m-%d,
+                             date_to: str in format %y-%m-%d
+                             file_path: str, file_name: str
+    :return: None
+    """
+    session.findById("wnd[0]").maximize()
+    session.findById("wnd[0]/tbar[0]/okcd").text = " ZCPOT_RRP_REPORT"
+    session.findById("wnd[0]").sendVKey(0)
+    session.findById("wnd[0]/tbar[1]/btn[17]").press()
+    if 'variant' in kwargs:
+        session.findById("wnd[1]/usr/txtV-LOW").text = kwargs['variant']
+        session.findById("wnd[1]/usr/txtENAME-LOW").text = ""
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    if 'id_list' in kwargs:
+        kwargs['id_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[0]/usr/tabsTABSTRIP_SELBLOCK/tabpSELSCR1/ssub%_SUBSCREEN_SELBLOCK:ZCPOR_RRP_REPORT:2010/btn%_S_MATNR_%_APP_%-VALU_PUSH").press()
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
+        session.findById("wnd[1]/tbar[0]/btn[24]").press()
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    if 'date_from' in kwargs:
+        session.findById("wnd[0]/usr/ctxtP_DTSTA").text = kwargs['date_from']
+    if 'date_to' in kwargs:
+        session.findById("wnd[0]/usr/ctxtP_DTEND").text = kwargs['date_to']
+    session.findById("wnd[0]").sendVKey(8)
+    if 'layout' in kwargs:
+        session.findById("wnd[0]/tbar[1]/btn[33]").press()
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").currentCellRow = -1
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectColumn("VARIANT")
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectedRows = ""
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").contextMenu()
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
+        session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").selected = True
+        session.findById("wnd[2]/usr/txtGS_SEARCH-VALUE").text = kwargs['layout']
+        session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").setFocus()
+        session.findById("wnd[2]/tbar[0]/btn[0]").press()
+        session.findById("wnd[2]/tbar[0]/btn[12]").press()
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").clickCurrentCell()
+    session.findById("wnd[0]/tbar[1]/btn[45]").press()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").select()
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    if 'file_path' in kwargs:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = kwargs['file_path']
+    else:
+        session.findById("wnd[1]/usr/ctxtDY_PATH").text = sapguiparam.SAP_TMP_PATH
+    if 'file_name' in kwargs:
+        sapgui.sap_del_tmp_file(file_name=kwargs['file_name'])
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = kwargs['file_name']
+    else:
+        sapgui.sap_del_tmp_file()
+        session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = sapguiparam.SAP_TMP_FILE
+    session.findById("wnd[1]/usr/ctxtDY_FILE_ENCODING").text = "0000"
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[0]").sendVKey(3)
+    session.findById("wnd[0]").sendVKey(3)
