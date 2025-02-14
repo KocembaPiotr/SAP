@@ -292,7 +292,8 @@ def me2m(session, **kwargs) -> None:
     """
     Function to run me2m code
     :param session: parameter obtained from sapgui
-    :param kwargs: optional: variant:str, date_from: str in format %Y-%m-%d, date_to: str in format %Y-%m-%d,
+    :param kwargs: optional: variant:str, po_list: dataframe, layout: str
+                             date_from: str in format %Y-%m-%d, date_to: str in format %Y-%m-%d,
                              file_path: str, file_name: str
     :return: None
     """
@@ -308,7 +309,26 @@ def me2m(session, **kwargs) -> None:
         session.findById("wnd[0]/usr/ctxtS_EINDT-LOW").text = kwargs['date_from']
     if 'date_to' in kwargs:
         session.findById("wnd[0]/usr/ctxtS_EINDT-HIGH").text = kwargs['date_to']
+    if 'po_list' in kwargs:
+        session.findById("wnd[0]/usr/btn%_S_EBELN_%_APP_%-VALU_PUSH").press()
+        kwargs['po_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
+        session.findById("wnd[1]/tbar[0]/btn[24]").press()
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
     session.findById("wnd[0]").sendVKey(8)
+    if 'layout' in kwargs:
+        session.findById("wnd[0]/tbar[1]/btn[33]").press()
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").currentCellRow = -1
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectColumn("VARIANT")
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectedRows = ""
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").contextMenu()
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").selectContextMenuItem("&FIND")
+        session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").selected = True
+        session.findById("wnd[2]/usr/txtGS_SEARCH-VALUE").text = kwargs['layout']
+        session.findById("wnd[2]/usr/chkGS_SEARCH-EXACT_WORD").setFocus()
+        session.findById("wnd[2]/tbar[0]/btn[0]").press()
+        session.findById("wnd[2]/tbar[0]/btn[12]").press()
+        session.findById("wnd[1]/usr/subSUB_CONFIGURATION:SAPLSALV_CUL_LAYOUT_CHOOSE:0500/cntlD500_CONTAINER/shellcont/shell").clickCurrentCell()
     session.findById("wnd[0]/tbar[1]/btn[45]").press()
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
     session.findById("wnd[1]/tbar[0]/btn[0]").press()

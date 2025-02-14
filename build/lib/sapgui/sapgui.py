@@ -19,7 +19,10 @@ def sap_open(sap_module: dict) -> None:
     try:
         if sapguiparam.SAP_APP_FILE not in str(subprocess.check_output('tasklist', shell=True)):
             subprocess.Popen(sapguiparam.SAP_APP_PATH + sapguiparam.SAP_APP_FILE, shell=True)
-            time.sleep(5)
+            for i in range(5):
+                time.sleep(3)
+                if sapguiparam.SAP_APP_FILE in str(subprocess.check_output('tasklist', shell=True)):
+                    break
         sapgui = win32com.client.GetObject("SAPGUI")
         application = sapgui.GetScriptingEngine
         if application.Connections.Count == 0:
