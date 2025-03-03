@@ -1067,7 +1067,7 @@ def zcs11h(session, **kwargs) -> None:
     """
     Function to run zcs11h code
     :param session: parameter obtained from sapgui
-    :param kwargs: optional: variant: str, valid_date: str in format %y-%m-%d, id_list: dataframe,
+    :param kwargs: optional: variant: str, valid_date: str in format %y-%m-%d, id_list: dataframe, gr_list: dataframe,
                              file_path: str, file_name: str
     :return: None
     """
@@ -1086,6 +1086,11 @@ def zcs11h(session, **kwargs) -> None:
         kwargs['id_list'].to_clipboard(index=False, header=None)
         session.findById("wnd[0]/usr/btn%_S_MATNR_%_APP_%-VALU_PUSH").press()
         session.findById("wnd[1]/tbar[0]/btn[16]").press()
+        session.findById("wnd[1]/tbar[0]/btn[24]").press()
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    if 'gr_list' in kwargs:
+        kwargs['gr_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[0]/usr/btn%_S_MATKL_%_APP_%-VALU_PUSH").press()
         session.findById("wnd[1]/tbar[0]/btn[24]").press()
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
     session.findById("wnd[0]").sendVKey(8)
@@ -1113,7 +1118,7 @@ def zkpc03(session, **kwargs) -> None:
     """
     Function to run zkpc03 code
     :param session: parameter obtained from sapgui
-    :param kwargs: optional: variant: str, id_list: dataframe, file_path: str, file_name: str
+    :param kwargs: optional: variant: str, id_list: dataframe, gr_list: dataframe, file_path: str, file_name: str
     :return: None
     """
     session.findById("wnd[0]").maximize()
@@ -1127,6 +1132,12 @@ def zkpc03(session, **kwargs) -> None:
     if 'id_list' in kwargs:
         kwargs['id_list'].to_clipboard(index=False, header=None)
         session.findById("wnd[0]/usr/btn%_S_MATERI_%_APP_%-VALU_PUSH").press()
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
+        session.findById("wnd[1]/tbar[0]/btn[24]").press()
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    if 'gr_list' in kwargs:
+        kwargs['gr_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[0]/usr/btn%_S_MATKL_%_APP_%-VALU_PUSH").press()
         session.findById("wnd[1]/tbar[0]/btn[16]").press()
         session.findById("wnd[1]/tbar[0]/btn[24]").press()
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
@@ -1261,7 +1272,8 @@ def zc05h(session, **kwargs) -> None:
     """
     Function to run zc05H code
     :param session: parameter obtained from sapgui
-    :param kwargs: optional: variant: str, variant_user: str, file_path: str, file_name: str
+    :param kwargs: optional: variant: str, variant_user: str, id_list: dataframe,
+                             file_path: str, file_name: str
     :return: None
     """
     session.findById("wnd[0]").maximize()
@@ -1273,6 +1285,16 @@ def zc05h(session, **kwargs) -> None:
     if 'variant_user' in kwargs:
         session.findById("wnd[1]/usr/sub:SAPLSPO4:0300/ctxtSVALD-VALUE[1,21]").text = kwargs['variant_user']
     session.findById("wnd[1]").sendVKey(0)
+    if 'id_list' in kwargs:
+        kwargs['id_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[0]/shellcont/shell/shellcont[1]/shell[1]").expandNode("          1")
+        session.findById("wnd[0]/shellcont/shell/shellcont[1]/shell[1]").topNode = "          1"
+        session.findById("wnd[0]/shellcont/shell/shellcont[1]/shell[1]").selectItem("          2", "C         12")
+        session.findById("wnd[0]/shellcont/shell/shellcont[1]/shell[1]").ensureVisibleHorizontalItem("          2", "C         12")
+        session.findById("wnd[0]/shellcont/shell/shellcont[1]/shell[1]").pressButton("          2", "C         12")
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
+        session.findById("wnd[1]/tbar[0]/btn[24]").press()
+        session.findById("wnd[1]/tbar[0]/btn[8]").press()
     session.findById("wnd[0]").sendVKey(8)
     session.findById("wnd[0]/tbar[1]/btn[45]").press()
     session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select()
@@ -1312,7 +1334,6 @@ def zdisplay(session, **kwargs) -> None:
         session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").selectedRows = "6"
     session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell/shellcont[1]/shell").clickCurrentCell()
     if 'id_list' in kwargs:
-        print('test')
         kwargs['id_list'].to_clipboard(index=False, header=None)
         session.findById("wnd[0]/usr/btn%_I1_%_APP_%-VALU_PUSH").press()
         session.findById("wnd[1]/tbar[0]/btn[16]").press()
