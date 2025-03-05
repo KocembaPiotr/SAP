@@ -1067,7 +1067,7 @@ def zcs11h(session, **kwargs) -> None:
     """
     Function to run zcs11h code
     :param session: parameter obtained from sapgui
-    :param kwargs: optional: variant: str, valid_date: str in format %y-%m-%d, id_list: dataframe, gr_list: dataframe,
+    :param kwargs: optional: variant: str, valid_date: str in format %y-%m-%d, id_list: dataframe, mat_gr_list: dataframe,
                              file_path: str, file_name: str
     :return: None
     """
@@ -1088,9 +1088,10 @@ def zcs11h(session, **kwargs) -> None:
         session.findById("wnd[1]/tbar[0]/btn[16]").press()
         session.findById("wnd[1]/tbar[0]/btn[24]").press()
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
-    if 'gr_list' in kwargs:
-        kwargs['gr_list'].to_clipboard(index=False, header=None)
-        session.findById("wnd[0]/usr/btn%_S_MATKL_%_APP_%-VALU_PUSH").press()
+    if 'mat_gr_list' in kwargs:
+        kwargs['mat_gr_list'].to_clipboard(index=False, header=None)
+        session.findById("wnd[0]/usr/btn%_S_CMATKL_%_APP_%-VALU_PUSH").press()
+        session.findById("wnd[1]/tbar[0]/btn[16]").press()
         session.findById("wnd[1]/tbar[0]/btn[24]").press()
         session.findById("wnd[1]/tbar[0]/btn[8]").press()
     session.findById("wnd[0]").sendVKey(8)
